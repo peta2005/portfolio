@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Slides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f7f8fc;
+        --panel: #ffffff;
+        --primary: #2447ff;
+        --primary-soft: #edf2ff;
+        --text: #172033;
+        --muted: #5a6478;
+        --accent: #12b886;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: #dfe7ff;
+        font-family: "Inter", sans-serif;
+        color: var(--text);
+      }
+
+      .page {
+        width: 100vw;
+        min-height: 100vh;
+        padding: 32px;
+        display: grid;
+        place-items: center;
+      }
+
+      .deck {
+        width: min(100%, 1600px);
+        aspect-ratio: 16 / 9;
+        background: linear-gradient(135deg, #f9fbff, #eef4ff);
+        border-radius: 26px;
+        box-shadow: 0 25px 60px rgba(24, 35, 62, 0.14);
+        overflow: hidden;
+        border: 1px solid rgba(23,32,51,0.06);
+      }
+
+      .slide {
+        width: 100%;
+        height: 100%;
+        padding: 56px 72px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .slide:nth-child(2n) {
+        background: linear-gradient(135deg, #ffffff, #edf3ff);
+      }
+
+      .eyebrow {
+        margin: 0 0 18px;
+        color: var(--primary);
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+      }
+
+      h1, h2, h3 {
+        margin: 0 0 18px;
+        letter-spacing: -0.05em;
+      }
+
+      h1 {
+        font-size: clamp(2.7rem, 3vw, 4.5rem);
+        line-height: 1.05;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 2.4vw, 3rem);
+      }
+
+      p {
+        color: var(--muted);
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      ul {
+        margin: 20px 0 0;
+        padding-left: 20px;
+        color: var(--text);
+        line-height: 1.8;
+      }
+
+      .contact-card,
+      .card {
+        background: rgba(255,255,255,0.8);
+        border: 1px solid rgba(23,32,51,0.05);
+        border-radius: 24px;
+        padding: 26px;
+        box-shadow: 0 18px 40px rgba(17,28,56,0.07);
+      }
+
+      .avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 24px;
+        background: linear-gradient(135deg, var(--primary), #7e96ff);
+        color: white;
+        display: grid;
+        place-items: center;
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 18px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .stats div {
+        background: var(--primary-soft);
+        border-radius: 16px;
+        padding: 16px 12px;
+      }
+
+      .stats strong {
+        display: block;
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+      }
+
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .badge {
+        background: var(--primary-soft);
+        color: var(--primary);
+        border-radius: 999px;
+        padding: 9px 14px;
+        font-weight: 600;
+        font-size: 0.85rem;
+      }
+
+      .project-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 260px;
+        background: linear-gradient(135deg, #edf3ff, #dfeaff);
+        border-radius: 24px;
+        border: 1px solid rgba(23,32,51,0.05);
+      }
+
+      .chart {
+        width: min(100%, 340px);
+        height: 180px;
+        display: flex;
+        align-items: flex-end;
+        gap: 18px;
+      }
+
+      .chart span {
+        display: block;
+        width: 100%;
+        border-radius: 16px 16px 0 0;
+        background: linear-gradient(180deg, #7f9bff, #2447ff);
+      }
+
+      .mock {
+        width: min(100%, 300px);
+        height: 220px;
+        border-radius: 26px;
+        background: linear-gradient(135deg, #fff1eb, #ffe7dc);
+        position: relative;
+        border: 1px solid rgba(23,32,51,0.05);
+      }
+
+      .mock::before {
+        content: "";
+        position: absolute;
+        inset: 26px;
+        border-radius: 50%;
+        background: radial-gradient(circle at center, rgba(255,255,255,0.9), rgba(255,255,255,0.3) 35%, rgba(255, 132, 76, 0.3) 62%, rgba(255,255,255,0.05) 100%);
+      }
+
+      .mock::after {
+        content: "";
+        position: absolute;
+        inset: 56px;
+        border-radius: 50%;
+        border: 12px solid rgba(212, 90, 49, 0.24);
+      }
+
+      @media print {
+        body {
+          background: white;
+        }
+
+        .page {
+          padding: 0;
+        }
+
+        .deck {
+          width: 100vw;
+          height: 100vh;
+          border-radius: 0;
+          box-shadow: none;
+          border: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="deck">
+        <section class="slide">
+          <div>
+            <p class="eyebrow">Portfolio</p>
+            <h1>Your Name</h1>
+            <p>Software Engineer • AI & Data Enthusiast</p>
+            <div class="badge-row">
+              <span class="badge">TypeScript</span>
+              <span class="badge">Python</span>
+              <span class="badge">Machine Learning</span>
+              <span class="badge">Web Apps</span>
+            </div>
+            <ul>
+              <li>Open to Software Engineer / Data Science / AI roles</li>
+              <li>your.email@example.com</li>
+              <li>github.com/peta2005</li>
+              <li>linkedin.com/in/yourname</li>
+            </ul>
+          </div>
+          <div class="contact-card">
+            <div class="avatar">YN</div>
+            <h3>Your Name</h3>
+            <p>AI & software developer with a focus on building useful digital products.</p>
+            <div class="stats">
+              <div><strong>3</strong><span>Projects</span></div>
+              <div><strong>Full-stack</strong><span>Product work</span></div>
+              <div><strong>AI</strong><span>ML systems</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div>
+            <p class="eyebrow">Selected work</p>
+            <h2>StudyBuddy</h2>
+            <p>
+              A study support platform designed to help students stay organized,
+              manage tasks, and improve daily learning routines.
+            </p>
+            <div class="badge-row">
+              <span class="badge">TypeScript</span>
+              <span class="badge">Python</span>
+              <span class="badge">CSS</span>
+            </div>
+            <ul>
+              <li>Built a user-friendly product experience</li>
+              <li>Improved a structured learning workflow</li>
+              <li>Focused on productivity and planning</li>
+            </ul>
+          </div>
+          <div class="project-box">
+            <div class="chart">
+              <span style="height: 35%"></span>
+              <span style="height: 50%"></span>
+              <span style="height: 70%"></span>
+              <span style="height: 60%"></span>
+              <span style="height: 88%"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div>
+            <p class="eyebrow">Selected work</p>
+            <h2>Skin Disease Classifier</h2>
+            <p>
+              Deep learning project for classifying skin conditions from medical
+              image data using a CNN-based approach.
+            </p>
+            <div class="badge-row">
+              <span class="badge">Python</span>
+              <span class="badge">TensorFlow</span>
+              <span class="badge">ML</span>
+            </div>
+            <ul>
+              <li>Built a CNN workflow for image classification</li>
+              <li>Applied practical ML to a healthcare-use case</li>
+              <li>Focused on model-driven decision support</li>
+            </ul>
+          </div>
+          <div class="project-box">
+            <div class="mock"></div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div>
+            <p class="eyebrow">Selected work</p>
+            <h2>Golden Feast</h2>
+            <p>
+              Restaurant management platform for handling operations, orders, and
+              a streamlined hospitality workflow.
+            </p>
+            <div class="badge-row">
+              <span class="badge">HTML</span>
+              <span class="badge">CSS</span>
+              <span class="badge">JavaScript</span>
+              <span class="badge">Python</span>
+            </div>
+            <ul>
+              <li>Improved operational visibility and flow</li>
+              <li>Developed a practical business interface</li>
+              <li>Designed for user-friendly service management</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Highlights</h3>
+            <p>• Product-minded development</p>
+            <p>• Full-stack and data-driven thinking</p>
+            <p>• Clean UI + practical functionality</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
+
